@@ -64,13 +64,13 @@ dino_df %<>%
   rename(Year = years, Count = n)
 
 # Plot animated timeline
-dino_timeline <- ggplot(dino_df, aes(x = rev(Year), y = Count)) +
-  geom_line(col = "darkgreen", size = 1.2) +
+dino_timeline <- ggplot(dino_df, aes(x = Year, y = Count)) +
+  geom_line(col = "darkgreen", size = 1.2) +  
+  geom_emoji(emoji = "1f996") +
   geom_emoji(data = dino_df %>% filter(Year == 247), emoji = "1f95a") +
-  geom_emoji(data = dino_df %>% filter(Year <= 246 & Year >= 63), emoji = "1f996") +
   geom_emoji(data = dino_df %>% filter(Year == 62), emoji = "1f525") +
   scale_x_reverse() + 
-  transition_reveal(Year) + 
+  transition_reveal(rev(Year)) + 
   labs(title = "Number of dinosaur species over time", subtitle = " ", 
        x = "Age in millions of years (Ma)", y = "Species count", caption = "Data source: \nPaleobiology Database") + 
   theme_minimal() + dino_theme

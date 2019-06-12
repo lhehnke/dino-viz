@@ -64,7 +64,7 @@ dino_df %<>%
   rename(Year = years, Count = n)
 
 # Plot animated timeline
-dino_timeline <- ggplot(dino_df, aes(x = Year, y = Count)) +
+dino_timeline <- ggplot(dino_df, aes(x = rev(Year), y = Count)) +
   geom_line(col = "darkgreen", size = 1.2) +
   geom_emoji(data = dino_df %>% filter(Year == 247), emoji = "1f95a") +
   geom_emoji(data = dino_df %>% filter(Year <= 246 & Year >= 63), emoji = "1f996") +
